@@ -727,6 +727,13 @@ void merge(node *&treap, node *left, node *right) {                     // Merge
     }
 }
 
+void print(node *treap) {						// print treap
+    if (treap == NULL) return;
+    print(treap->left);
+    cout << treap->value;
+    print(treap->right);
+}
+
 int find_sum(node *treap, int k) {                                      // Computes the sum of the subarray
     if (treap == 0 || k == 0)
         return 0;
