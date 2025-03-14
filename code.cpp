@@ -662,13 +662,15 @@ Treap :
 struct node {
     node *L, *R;
     int W, S, sm, V;    // W = weight/priority  ,   S = size of the treap   ,   sm = Sum of elements in the treap   ,   V = Value of the node
-    bool F;             // Used to reverse the treap
-    node(int x) {
-        L = R = 0;      // Inotialise left and right pointers
+    bool F;   
+    char ch;          // Used to reverse the treap
+    node(char x) {
+        L = R = 0;      // Initializing left and right pointers
         W = rand();
         S = 1;          
         sm = x;
         V = x;
+        ch = x;
         F = 0;          // Initially the array is straight 
     }
 };
@@ -690,7 +692,7 @@ void push(node *treap) {                    // Used to reverse the treap, once t
     }
 }
 
-void split(node *treap, node *&left, node *&right, int k) {                 // Splits the trip into 2 parts - left and right
+void split(node *treap, node *&left, node *&right, int k) {                 // Splits the treap into 2 parts - left and right
     if (treap == 0)
         left = right = 0;
     else {
@@ -729,9 +731,9 @@ void merge(node *&treap, node *left, node *right) {                     // Merge
 
 void print(node *treap) {						// print treap
     if (treap == NULL) return;
-    print(treap->left);
-    cout << treap->value;
-    print(treap->right);
+    print(treap->L);
+    cout << treap->ch;
+    print(treap->R);
 }
 
 int find_sum(node *treap, int k) {                                      // Computes the sum of the subarray
